@@ -1,3 +1,4 @@
+[Preview](https://htmlpreview.github.io/?https://github.com/jeoffreydissard/Exos-Javascript-Serie/blob/master/index.html)
 ![Javascript](https://i.gifer.com/8OGO.gif)
 ### EXERCICE 1
 * demander deux nombres à l'utilisateur (dans deux champs distincts)
