@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="CSS/style.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" 		integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" 		crossorigin="anonymous">
+        <title>Exos-Javascript-Serie</title>
+    </head>
+    <body>
+    <h3>Exo 1</h3>
+    <form action="#">
+        <input type="text" placeholder="Premier nombre" value="">
+        <input type="text" placeholder="Deuxieme nombre" value="">
+        <input type="button" value="Multiplier">
+    </form>
+    <p id="exo1">Résultat : </p>
+    <hr>
+    <h3>Exo 2</h3>
+    <form action="#">
+        <input type="color" value="">
+        <input type="button" value="Changer la couleur">
+    </form>
+    <hr>
+    <h3>Exo 3</h3>
+    <form action="#">
+        <input type="text" placeholder="Entrer l'URL d'une image" value="">
+        <input type="button" value="Ajouter l'image">
+    </form>
+    <div id="image"></div>
+    <hr>
+    <h3>Exo 4</h3>
+    <form action="#">
+        <input type="text" placeholder="Entrer un nombre" value="">
+        <input type="button" value="Moduler">
+    </form>
+    <p id="exo4">Si l'on divise le nombre enter par 5, le reste est de ...</p>
+    <hr>
+    <h3>Exo 5</h3>
+    <form action="#">
+        <input type="text" placeholder="Quel est votre age" value="">
+        <input type="button" value="Voir le nombre de jours vécus">
+    </form>
+    <p id="exo5">Vous avez vécu ... jours</p>
+    <hr>
+    <h3>Exo 6</h3>
+    <form action="#">
+        <input type="text" placeholder="Quel est votre age" value="">
+        <input type="text" placeholder="Age visé" value="">
+        <input type="button" value="Voir l'écart entre votre age et l'age visé">
+    </form>
+    <p id="exo6">Vous avez vécu ... jours. Il y a encore ... jours avant vos ... ans</p>
+    <hr>
+    <h3>Exo 7</h3>
+    <button>Confirmation d'humeur</button>
+    <p id="exo7"></p>
+    <hr>
+    <h3>Exo 8</h3>
+    <form action="#">
+        <input type="text" placeholder="Entrer un chiffre entre 0 et 5" id="Lechiffre" value="">
+        <input type="button" value="Ecrire en lettres">
+    </form>
+    <p id="exo8">Le chiffre en lettres :</p>
+    <hr>
+    <h3>Exo 9</h3>
+    <form action="#">
+        <input type="text" placeholder="Ajouter un article a la liste de courses" value="">
+        <input type="button" value="Voir la liste de courses">
+    </form>
+    <p id="exo9">Votre liste de courses : <br></p>
+    <hr>
+
+
+
+
+    <script>
+        var exo1 = document.getElementsByTagName('input')[2];
+        exo1.addEventListener("click", (Multiplication) =>{
+            var PNb = document.getElementsByTagName('input')[0].value;
+            var DNb = document.getElementsByTagName('input')[1].value;
+            var p1 = document.getElementById("exo1");
+            p1.innerHTML += PNb*DNb;
+        });
+        var exo2 = document.getElementsByTagName('input')[4];
+        exo2.addEventListener("click", (fBgC) =>{
+            var BgC = document.getElementsByTagName('input')[3].value;
+            document.body.style.backgroundColor = BgC;
+        });
+        var exo3 = document.getElementsByTagName('input')[6];
+        exo3.addEventListener("click", (AjImage) =>{
+            var Image = document.getElementsByTagName('input')[5].value;
+            var Img = document.createElement('img');
+            Img.setAttribute("src", Image);
+            document.getElementById("image").appendChild(Img);
+        });
+        var exo4 = document.getElementsByTagName('input')[8];
+        exo4.addEventListener("click", (Modulo) =>{
+            var NbaMo = document.getElementsByTagName('input')[7].value;
+            var p2 = document.getElementById("exo4");
+            p2.innerHTML = "Si l'on divise " + NbaMo + " par 5, le reste est de " + NbaMo%5;
+        });
+        var exo5 = document.getElementsByTagName('input')[10];
+        exo5.addEventListener("click", (JoursVecus) =>{
+            var Age = document.getElementsByTagName('input')[9].value;
+            var p3 = document.getElementById("exo5");
+            p3.innerHTML = "Vous avez vécu " + Age*365 + " jours";
+        });
+        var exo6 = document.getElementsByTagName('input')[13];
+        exo6.addEventListener("click", (AgeViser) =>{
+            var Ageexo6 = document.getElementsByTagName('input')[11].value;
+            var AgeVise = document.getElementsByTagName('input')[12].value;
+            if (AgeVise > Ageexo6){
+                var p4 = document.getElementById("exo6");
+                p4.innerHTML = "Vous avez vécu " + Ageexo6*365 + " jours. Il y a encore " + ((AgeVise*365)-(Ageexo6*365)) + " jours avant vos " + AgeVise + " ans";
+            } else {
+                alert("Erreur, veuillez entrer un age supérieur à votre age.");
+            }
+        });
+        var exo7 = document.getElementsByTagName('button')[0];
+        exo7.addEventListener("click", (Content) =>{
+            var p5 = document.getElementById("exo7");
+            p5.style.fontSize = "40px";
+            if (window.confirm("Etes vous content ?")){
+                p5.innerHTML = '<i class="far fa-smile"></i>';
+                p5.style.color = "green";
+            } else {
+                p5.innerHTML = '<i class="far fa-frown"></i>';
+                p5.style.color = "red";
+            }
+        });
+
+        var exo8 = document.getElementsByTagName('input')[15];
+        exo8.addEventListener("click", (Chiffre) =>{
+            var LeChiffre = document.getElementsByTagName('input')[14].value;
+            var lettres = "";
+            switch (LeChiffre){
+                case "0":
+                    lettres = "Zéro";
+                    break;
+                case "1":
+                    lettres = "Un";
+                    break;
+                case "2":
+                    lettres = "Deux";
+                    break;
+                case "3":
+                    lettres = "Trois";
+                    break;
+                case "4":
+                    lettres = "Quatre";
+                    break;
+                case "5":
+                    lettres = "Cinq";
+                    break;
+            }
+            var p6 = document.getElementById("exo8");
+            p6.innerHTML = "Le chiffre en lettres : " + lettres;
+        });
+        var Liste = [];
+        var exo9 = document.getElementsByTagName('input')[17];
+        exo9.addEventListener("click", FListe);
+        function FListe() {
+            var TrucPourListe = document.getElementsByTagName('input')[16].value;
+            console.log(TrucPourListe);
+            if(TrucPourListe == ""){
+                console.log("coucou");
+            }else {
+                var p7 = document.getElementById("exo9");
+                Liste.push (TrucPourListe);
+                if(Liste.length == 1){
+                    p7.innerHTML += Liste[Liste.length -1];
+                } else {
+                    p7.innerHTML += ", " + Liste[Liste.length -1];
+                }
+
+                console.log(Liste);
+            }
+        }
+    </script>
+
+
+
+
+
+    </body>
+</html>	
